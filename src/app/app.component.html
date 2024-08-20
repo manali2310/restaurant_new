@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="form-container">
+    <form (ngSubmit)="addRestaurant()" class="form">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="restaurant.name" name="name" class="form-control" placeholder="Name" required />
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="restaurant.description" name="description" class="form-control" placeholder="Description" required />
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="restaurant.location" name="location" class="form-control" placeholder="Location" required />
+      </div>
+      <button type="submit" class="btn-submit">{{ editing ? 'Update' : 'Add' }} Restaurant</button>
+    </form>
+  </div>
+
+  <div class="cards-container">
+    <div class="card" *ngFor="let restaurant of restaurants">
+      <div class="card-body">
+        <h5 class="card-title">{{ restaurant.name }}</h5>
+        <p class="card-text">{{ restaurant.description }}</p>
+        <p class="card-text"><small class="text-muted">{{ restaurant.location }}</small></p>
+      </div>
+      <div class="card-footer">
+        <button class="btn-edit" (click)="editRestaurant(restaurant)">Edit</button>
+        <button class="btn-delete" (click)="deleteRestaurant(restaurant.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
